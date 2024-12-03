@@ -1,27 +1,34 @@
+import React from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { useCount } from './CounterProvider'
+import { decrement, increment } from './actions/ActionType'
 
 
-function App() {
-  return (
-  <div id="root">
-    <div class="app">
-    <div class="app-body"> 
+
+
+const App = () => {
+  
+  const count = useSelector((state)=>state.initialState.count)
+
+  
+
+  const dispatch = useDispatch()
+
+  // const{store,dispatch}=useCount()
+
+
+
+  return(
+
 
     <div>
-   <button>Increment</button>
-   <label id="value">--</label>
-   <button>Decrement</button>
-
-  </div>
-  </div>
-  </div>
-  </div>
-
-  );
+      <button  onClick={()=>dispatch(increment())}>Increment</button>
+      <span>{count}</span>
+      <button  onClick={()=>dispatch(decrement())}>Decrement</button>
+    </div>
+  )
 }
 
-
-
-export default App;
-
+export default App
 
 
